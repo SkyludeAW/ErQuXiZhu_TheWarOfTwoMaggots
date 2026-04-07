@@ -33,6 +33,8 @@
 
 # Visual Studio cache directory
 .vs/
+.mdf
+.dbmdl
 
 # Gradle cache directory
 .gradle/
