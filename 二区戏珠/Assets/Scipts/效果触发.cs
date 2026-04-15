@@ -9,7 +9,7 @@ public class 效果触发 : MonoBehaviour
     void Start()
     {
         Destroy(gameObject, DestroyTime);
-     
+        //GameController.Instance.player1.HP += 1;
     }
 
     // Update is called once per frame
@@ -19,12 +19,19 @@ public class 效果触发 : MonoBehaviour
     }
 
 
-    void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.tag == "Player")
+        if (other.CompareTag("Player1"))
         {
-            Destroy(gameObject, 0.1f);
             action?.Invoke(this);
+            Destroy(gameObject,0.1f);
+            GameController.Instance.player1.HP += 1;
+        }
+        if (other.CompareTag("Player2"))
+            {
+                action?.Invoke(this);
+                Destroy(gameObject,0.1f);
+                GameController.Instance.player2.HP += 1;
         }
     }
 }
